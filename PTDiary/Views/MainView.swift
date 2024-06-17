@@ -9,43 +9,57 @@ import SwiftUI
 import SwiftData
 
 struct MainView: View {
+    // 모든 운동 일지
+    @Query var diaries: [PTDiary]
+    
+    // 검색 텍스트
     @State private var searchText: String = ""
+    
+    // 검색 결과 표시
+    var filteredDiaries: [PTDiary] {
+        if searchText.isEmpty {
+            return diaries
+        } else {
+            return diaries.filter { diary in
+                diary.title.contains(searchText) ||
+                diary.exercises.contains(searchText) ||
+                diary.date.formatted().contains(searchText)
+            }
+        }
+    }
     
     var body: some View {
         NavigationStack {
             List {
                 // 이번 주
                 Section {
-                    PTDiaryRow(
-                        title: "PT 1회차 운동일지", date: Date.now
-                    )
+                    // TODO: 변수로 분리해서 if else 로 뿌리기 텍스트까지
+                    ForEach(filteredDiaries.filter { Calendar.current.isDateInThisMonth($0.date)}) { diary in
+                        PTDiaryRow(title: diary.title, date: diary.date)
+                    }
                 } header: {
-                    Text("이번 주")
+                    Text("이번 달")
                         .font(.title3)
                         .bold()
                         .foregroundStyle(.black)
                         .padding(.leading, -16)
+                        .padding(.bottom, 4)
                 }
                 
                 // 나머지
+                // TODO: 변수로 분리해서 if else 로 뿌리기 텍스트까지
                 Section {
-                    PTDiaryRow(title: "PT 1회차 운동일지", date: Date.now)
-                    PTDiaryRow(title: "PT 1회차 운동일지", date: Date.now)
-                    PTDiaryRow(title: "PT 1회차 운동일지", date: Date.now)
-                    PTDiaryRow(title: "PT 1회차 운동일지", date: Date.now)
-                    PTDiaryRow(title: "PT 1회차 운동일지", date: Date.now)
-                    PTDiaryRow(title: "PT 1회차 운동일지", date: Date.now)
-                    PTDiaryRow(title: "PT 1회차 운동일지", date: Date.now)
-                    PTDiaryRow(title: "PT 1회차 운동일지", date: Date.now)
-                    PTDiaryRow(title: "PT 1회차 운동일지", date: Date.now)
+                    ForEach(filteredDiaries.filter { !Calendar.current.isDateInThisMonth($0.date)}) { diary in
+                        PTDiaryRow(title: diary.title, date: diary.date)
+                    }
                 } header: {
                     Text("지난 기록")
                         .font(.title3)
                         .bold()
                         .foregroundStyle(.black)
                         .padding(.leading, -16)
+                        .padding(.bottom, 4)
                 }
-                
             } // List
             .navigationTitle("운동 일지")
             .navigationBarTitleDisplayMode(.large)

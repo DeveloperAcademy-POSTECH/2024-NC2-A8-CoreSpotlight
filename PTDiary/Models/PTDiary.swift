@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import SwiftData
 
-struct PTDiary {
+@Model
+class PTDiary {
     /// 제목; PT 13회차 운동 일지
     var title: String
     
@@ -31,4 +33,15 @@ struct PTDiary {
     
     /// 느낀 점
     var impression: String?
+    
+    init(title: String, round: Int, date: Date, exercises: [String], learned: String? = nil, improvements: String? = nil, keyPoints: String? = nil, impression: String? = nil) {
+        self.title = title
+        self.round = round
+        self.date = date
+        self.exercises = exercises
+        self.learned = learned
+        self.improvements = improvements
+        self.keyPoints = keyPoints
+        self.impression = impression
+    }
 }

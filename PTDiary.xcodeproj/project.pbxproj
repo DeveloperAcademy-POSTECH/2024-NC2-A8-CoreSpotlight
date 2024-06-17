@@ -16,6 +16,7 @@
 		FB0FD7092C200AE20063B64D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7082C200AE20063B64D /* Date+Extension.swift */; };
 		FB0FD70B2C200BB60063B64D /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD70A2C200BB60063B64D /* WriteView.swift */; };
 		FB0FD70E2C20121E0063B64D /* PTDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD70D2C20121E0063B64D /* PTDiary.swift */; };
+		FB0FD7102C2017000063B64D /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD70F2C2017000063B64D /* Calendar+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		FB0FD7082C200AE20063B64D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		FB0FD70A2C200BB60063B64D /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		FB0FD70D2C20121E0063B64D /* PTDiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTDiary.swift; sourceTree = "<group>"; };
+		FB0FD70F2C2017000063B64D /* Calendar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				FB0FD7082C200AE20063B64D /* Date+Extension.swift */,
+				FB0FD70F2C2017000063B64D /* Calendar+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				FB0FD70E2C20121E0063B64D /* PTDiary.swift in Sources */,
 				FB0FD70B2C200BB60063B64D /* WriteView.swift in Sources */,
 				FB0FD6F62C2006E70063B64D /* MainView.swift in Sources */,
+				FB0FD7102C2017000063B64D /* Calendar+Extension.swift in Sources */,
 				FB0FD6F82C2006E70063B64D /* Item.swift in Sources */,
 				FB0FD6F42C2006E70063B64D /* PTDiaryApp.swift in Sources */,
 			);
