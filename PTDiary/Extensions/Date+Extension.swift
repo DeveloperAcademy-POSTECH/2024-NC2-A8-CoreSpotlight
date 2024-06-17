@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+extension Date {
+    /// Date 타입을 "2024.02.10" 형식의 문자열로 반환합니다.
+    var dateFormat: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY.MM.dd"
+        let dateString = dateFormatter.string(from: self)
+        return dateString
+    }
+}
