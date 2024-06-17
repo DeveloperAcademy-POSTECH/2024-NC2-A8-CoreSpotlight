@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class PTDiary {
+class PTDiary: Equatable, Hashable {
     /// 제목; PT 13회차 운동 일지
     var title: String
     
@@ -31,10 +31,10 @@ class PTDiary {
     /// 꼭 기억해야 할 점
     var keyPoints: String?
     
-    /// 느낀 점
-    var impression: String?
+    /// 느낀 점`
+    var impressions: String?
     
-    init(title: String, round: Int, date: Date, exercises: [String], learned: String? = nil, improvements: String? = nil, keyPoints: String? = nil, impression: String? = nil) {
+    init(title: String, round: Int, date: Date, exercises: [String], learned: String? = nil, improvements: String? = nil, keyPoints: String? = nil, impressions: String? = nil) {
         self.title = title
         self.round = round
         self.date = date
@@ -42,6 +42,6 @@ class PTDiary {
         self.learned = learned
         self.improvements = improvements
         self.keyPoints = keyPoints
-        self.impression = impression
+        self.impressions = impressions
     }
 }

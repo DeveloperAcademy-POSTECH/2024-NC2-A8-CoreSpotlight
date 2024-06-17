@@ -5,4 +5,8 @@
 //  Created by sseungwonnn on 6/17/24.
 //
 
-import Foundation
+import SwiftUI
+
+class NavigationManager: ObservableObject {
+    @Published var path = NavigationPath()
+}

@@ -8,36 +8,24 @@
 import SwiftUI
 import SwiftData
 import CoreSpotlight
-import UniformTypeIdentifiers
 
 struct DetailView: View {
-    
     // SwiftData에서 사용할 ModelContext
     @Environment(\.modelContext) private var modelContext
     
     // 네비게이션 관리하는 매니저
-    @ObservedObject var navigationManager: NavigationManager = NavigationManager()
+    @EnvironmentObject var navigationManager: NavigationManager
     
     // SwiftData를 관리하는 매니저
     private var swiftDataManger: SwiftDataManager {
         SwiftDataManager(modelContext: modelContext)
     }
     
-    var round: Int
+    var ptDiary: PTDiary
     
-    private var title: String {
-        "PT \(round)회차 운동 일지"
-    }
-    
-    private var date: Date {
-        Date.now
-    }
-    
+    var round: Int = 10
     
     @State private var exercisesInput: String = ""
-    @State private var exercises: [String] = []
-    
-    
     @State private var learned: String = ""
     @State private var improvements: String = ""
     @State private var keyPoints: String = ""
@@ -48,10 +36,10 @@ struct DetailView: View {
             VStack {
                 Form {
                     Section(header: Text("제목")) {
-                        Text(title)
+                        Text(ptDiary.title)
                     }
                     Section(header: Text("날짜")) {
-                        Text(date.dateFormat)
+                        Text(ptDiary.date.dateFormat)
                     }
                     
                     Section(header: Text("오늘 한 운동")) {
@@ -80,44 +68,46 @@ struct DetailView: View {
                     }
                     
                     Button {
+                        processTags()
                         saveData()
-                        if !navigationManager.path.isEmpty {
-                            navigationManager.path.removeLast()
-                        }
+                        navigationManager.path.removeLast()
                     } label: {
                         Text("저장")
                     }
                 }
                 .formStyle(.columns)
-            }
+                .onAppear {
+                    // 초기 값 설정
+                    exercisesInput = ptDiary.exercises.joined(separator: ", ")
+                    learned = ptDiary.learned ?? ""
+                    improvements = ptDiary.improvements ?? ""
+                    keyPoints = ptDiary.keyPoints ?? ""
+                    impressions = ptDiary.impressions ?? ""
+                }
+            } // VStack
             .padding(.horizontal)
+            .toolbar {
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    Button {
+                        saveData()
+                        navigationManager.path.removeLast()
+                    } label: {
+                        Text("저장")
+                    }
+                }
+            } // toolbar
         }
         
     }
-    
-    private func processTags() {
-        exercises = exercisesInput.split(separator: " ").map { String($0) }
-    }
-    
-    private func saveData() {
-        exercises = exercisesInput.split(separator: ",").map { $0.trimmingCharacters(in: .whitespaces) }
-        
-        let newDiary: PTDiary = PTDiary(
-            title: title,
-            round: round,
-            date: date,
-            exercises: exercises,
-            learned: learned,
-            improvements: improvements,
-            keyPoints: keyPoints,
-            impressions: impressions
-        )
+}
 
-        swiftDataManger.insertDiary(newDiary:  newDiary)
-        
-        indexData(diary: newDiary)
+extension DetailView {
+    /// 운동 종류를 구분합니다.
+    private func processTags() {
+        ptDiary.exercises = exercisesInput.split(separator: ",").map { $0.trimmingCharacters(in: .whitespaces) }
     }
     
+    /// Core Spotlight를 통해 데이터를 색인합니다.
     private func indexData(diary: PTDiary) {
         var searchableItems = [CSSearchableItem]()
         
@@ -129,26 +119,45 @@ struct DetailView: View {
         let searchableItem = CSSearchableItem(uniqueIdentifier: diary.round.description, domainIdentifier: "exerciseDiary", attributeSet: attributeSet)
         searchableItems.append(searchableItem)
         
-        // Get the default index.
-        let defaultIndex = CSSearchableIndex.default()
-
-
+//        // Get the default index.
+//        let defaultIndex = CSSearchableIndex.default()
+        
         // Create an encrypted index.
         let secureIndex = CSSearchableIndex(name: "운동 일지", protectionClass:.complete)
-
         
         secureIndex.indexSearchableItems(searchableItems) { error in
             if let error = error {
-                print("Spotlight 색인 오류: \(error.localizedDescription)")
+                print("Spotlight 색인 시도: \(error.localizedDescription)")
             } else {
-                print("운동 일지가 Spotlight에 성공적으로 색인되었습니다.")
+                print("Spotlight 색인 성공")
             }
         }
+    }
+
+    /// SwiftData 를 통해 데이터를 저장합니다.
+    private func saveData() {
+        // 데이터 갱신
+        processTags() // 운동 종류 갱신
+        ptDiary.learned = learned
+        ptDiary.improvements = improvements
+        ptDiary.keyPoints = keyPoints
+        ptDiary.impressions = impressions
+        
+        // 데이터 저장
+        swiftDataManger.updateDiary(newDiary: ptDiary)
+        
+        // 데이터 색인
+        indexData(diary: ptDiary)
     }
     
 }
 
 #Preview {
-    DetailView(round: 13)
-        .modelContainer(for: PTDiary.self, inMemory: true)
+    DetailView(ptDiary: PTDiary(
+        title: "PT 13회차 운동 일지",
+        round: 13,
+        date: Date.now,
+        exercises: [])
+    )
+    .modelContainer(for: PTDiary.self, inMemory: true)
 }
