@@ -8,19 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		FB0FD6F42C2006E70063B64D /* PTDiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD6F32C2006E70063B64D /* PTDiaryApp.swift */; };
-		FB0FD6F62C2006E70063B64D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD6F52C2006E70063B64D /* ContentView.swift */; };
-		FB0FD6F82C2006E70063B64D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD6F72C2006E70063B64D /* Item.swift */; };
+		FB0FD6F62C2006E70063B64D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD6F52C2006E70063B64D /* MainView.swift */; };
 		FB0FD6FA2C2006E90063B64D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB0FD6F92C2006E90063B64D /* Assets.xcassets */; };
 		FB0FD6FD2C2006E90063B64D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB0FD6FC2C2006E90063B64D /* Preview Assets.xcassets */; };
+		FB0FD7062C200AA20063B64D /* PTDiaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7052C200AA20063B64D /* PTDiaryRow.swift */; };
+		FB0FD7092C200AE20063B64D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7082C200AE20063B64D /* Date+Extension.swift */; };
+		FB0FD70B2C200BB60063B64D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD70A2C200BB60063B64D /* DetailView.swift */; };
+		FB0FD70E2C20121E0063B64D /* PTDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD70D2C20121E0063B64D /* PTDiary.swift */; };
+		FB0FD7102C2017000063B64D /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD70F2C2017000063B64D /* Calendar+Extension.swift */; };
+		FB0FD7122C201F750063B64D /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7112C201F750063B64D /* CustomTextField.swift */; };
+		FB0FD7152C20213E0063B64D /* SwiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7142C20213E0063B64D /* SwiftDataManager.swift */; };
+		FB0FD7172C2028BE0063B64D /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7162C2028BE0063B64D /* NavigationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FB0FD6F02C2006E70063B64D /* PTDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PTDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB0FD6F32C2006E70063B64D /* PTDiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTDiaryApp.swift; sourceTree = "<group>"; };
-		FB0FD6F52C2006E70063B64D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		FB0FD6F72C2006E70063B64D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		FB0FD6F52C2006E70063B64D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		FB0FD6F92C2006E90063B64D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB0FD6FC2C2006E90063B64D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FB0FD7052C200AA20063B64D /* PTDiaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTDiaryRow.swift; sourceTree = "<group>"; };
+		FB0FD7082C200AE20063B64D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		FB0FD70A2C200BB60063B64D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		FB0FD70D2C20121E0063B64D /* PTDiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTDiary.swift; sourceTree = "<group>"; };
+		FB0FD70F2C2017000063B64D /* Calendar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extension.swift"; sourceTree = "<group>"; };
+		FB0FD7112C201F750063B64D /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		FB0FD7142C20213E0063B64D /* SwiftDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataManager.swift; sourceTree = "<group>"; };
+		FB0FD7162C2028BE0063B64D /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +67,12 @@
 		FB0FD6F22C2006E70063B64D /* PTDiary */ = {
 			isa = PBXGroup;
 			children = (
+				FB0FD7132C2021300063B64D /* Managers */,
+				FB0FD70C2C2012120063B64D /* Models */,
+				FB0FD7072C200AD20063B64D /* Extensions */,
+				FB0FD7042C200A890063B64D /* Components */,
+				FB0FD7032C200A7D0063B64D /* Views */,
 				FB0FD6F32C2006E70063B64D /* PTDiaryApp.swift */,
-				FB0FD6F52C2006E70063B64D /* ContentView.swift */,
-				FB0FD6F72C2006E70063B64D /* Item.swift */,
 				FB0FD6F92C2006E90063B64D /* Assets.xcassets */,
 				FB0FD6FB2C2006E90063B64D /* Preview Content */,
 			);
@@ -68,6 +85,50 @@
 				FB0FD6FC2C2006E90063B64D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FB0FD7032C200A7D0063B64D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FB0FD6F52C2006E70063B64D /* MainView.swift */,
+				FB0FD70A2C200BB60063B64D /* DetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FB0FD7042C200A890063B64D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FB0FD7052C200AA20063B64D /* PTDiaryRow.swift */,
+				FB0FD7112C201F750063B64D /* CustomTextField.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		FB0FD7072C200AD20063B64D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FB0FD7082C200AE20063B64D /* Date+Extension.swift */,
+				FB0FD70F2C2017000063B64D /* Calendar+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FB0FD70C2C2012120063B64D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FB0FD70D2C20121E0063B64D /* PTDiary.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FB0FD7132C2021300063B64D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				FB0FD7142C20213E0063B64D /* SwiftDataManager.swift */,
+				FB0FD7162C2028BE0063B64D /* NavigationManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,9 +201,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB0FD6F62C2006E70063B64D /* ContentView.swift in Sources */,
-				FB0FD6F82C2006E70063B64D /* Item.swift in Sources */,
+				FB0FD7092C200AE20063B64D /* Date+Extension.swift in Sources */,
+				FB0FD7062C200AA20063B64D /* PTDiaryRow.swift in Sources */,
+				FB0FD70E2C20121E0063B64D /* PTDiary.swift in Sources */,
+				FB0FD70B2C200BB60063B64D /* DetailView.swift in Sources */,
+				FB0FD7122C201F750063B64D /* CustomTextField.swift in Sources */,
+				FB0FD6F62C2006E70063B64D /* MainView.swift in Sources */,
+				FB0FD7102C2017000063B64D /* Calendar+Extension.swift in Sources */,
 				FB0FD6F42C2006E70063B64D /* PTDiaryApp.swift in Sources */,
+				FB0FD7152C20213E0063B64D /* SwiftDataManager.swift in Sources */,
+				FB0FD7172C2028BE0063B64D /* NavigationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
