@@ -96,7 +96,7 @@ struct DetailView: View {
                     }
                 }
             } // toolbar
-        }
+        } // ScrollView
         
     }
 }
@@ -111,12 +111,14 @@ extension DetailView {
     private func indexData(diary: PTDiary) {
         var searchableItems = [CSSearchableItem]()
         
-        let attributeSet = CSSearchableItemAttributeSet(contentType: .content)
+        let attributeSet = CSSearchableItemAttributeSet(contentType: .text)
         attributeSet.title = diary.title
+        attributeSet.displayName = diary.title
+        attributeSet.alternateNames = diary.exercises
         attributeSet.contentDescription = diary.date.dateFormat
         attributeSet.keywords = diary.exercises
         
-        let searchableItem = CSSearchableItem(uniqueIdentifier: diary.round.description, domainIdentifier: "exerciseDiary", attributeSet: attributeSet)
+        let searchableItem = CSSearchableItem(uniqueIdentifier: diary.id.uuidString, domainIdentifier: "exerciseDiary", attributeSet: attributeSet)
         searchableItems.append(searchableItem)
         
 //        // Get the default index.

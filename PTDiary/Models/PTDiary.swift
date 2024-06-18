@@ -10,6 +10,7 @@ import SwiftData
 
 @Model
 class PTDiary: Equatable, Hashable {
+    var id: UUID
     /// 제목; PT 13회차 운동 일지
     var title: String
     
@@ -34,7 +35,8 @@ class PTDiary: Equatable, Hashable {
     /// 느낀 점`
     var impressions: String?
     
-    init(title: String, round: Int, date: Date, exercises: [String], learned: String? = nil, improvements: String? = nil, keyPoints: String? = nil, impressions: String? = nil) {
+    init(id: UUID = UUID(), title: String, round: Int, date: Date, exercises: [String], learned: String? = nil, improvements: String? = nil, keyPoints: String? = nil, impressions: String? = nil) {
+        self.id = id
         self.title = title
         self.round = round
         self.date = date
@@ -43,5 +45,13 @@ class PTDiary: Equatable, Hashable {
         self.improvements = improvements
         self.keyPoints = keyPoints
         self.impressions = impressions
+    }
+    
+    static func == (lhs: PTDiary, rhs: PTDiary) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
