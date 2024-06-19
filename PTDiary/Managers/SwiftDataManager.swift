@@ -29,9 +29,32 @@ extension SwiftDataManager {
         }
     }
     
+    /// PTDiary List를 반환합니다.
+    func fetchList() -> [PTDiary] {
+        
+        // 1. 최종 반환할 PTDiary 배열
+        var diaries: [PTDiary] = []
+        
+        // 2. Date를 기준으로 Sorting 규칙 생성
+        let sort = [SortDescriptor<PTDiary>(\.round, order: .reverse)]
+        
+        // 3. FetchDescriptor 설정
+        let descriptor = FetchDescriptor(sortBy: sort)
+        
+        // 4. ModelContext를 이용해 SwiftDataDiary 받아온 후 [Diary]로 변환
+        do {
+            let everyDiary = try modelContext.fetch(descriptor)
+            diaries = everyDiary.map { PTDiary(id: $0.id, title: $0.title, round: $0.round, date: $0.date, exercises: $0.exercises) }
+        } catch {
+            print("\(DiaryDataError.notFound)")
+        }
+        
+        // 5. 최종 반환
+        return diaries
+    }
     // MARK: - 불러오기
     /// 해당하는 운동 일지를 불러옵니다.
-    private func fetchDiary(diary: PTDiary) throws -> PTDiary {
+    func fetchDiary(diary: PTDiary) throws -> PTDiary {
         // 1.검색 조건 변수 설정
         let round: Int = diary.round
         
@@ -44,8 +67,8 @@ extension SwiftDataManager {
         // 4. ModelContext를 이용해 PTDiary 받아옴
         do {
             let possibleDiary = try modelContext.fetch(descriptor)
-            if let targetmeal = possibleDiary.first {
-                return targetmeal
+            if let targetDiary = possibleDiary.first {
+                return targetDiary
             }
         } catch {
             print("\(DiaryDataError.notFound)")
@@ -54,16 +77,68 @@ extension SwiftDataManager {
         throw DiaryDataError.notFound
     }
     
-    // MARK: - 추가 및 업데이트
-    func insertDiary(newDiary: PTDiary) {
-        print("추가 시도")
-        modelContext.insert(newDiary)
+    // MARK: - 불러오기
+    /// 해당하는 운동을 포함하는 운동 일지를 불러옵니다.
+    func fetchDiaryOfExercise(for exercise: String) -> [PTDiary] {
+        // 0. 결과 배열
+        var diaries: [PTDiary] = []
         
-        print("추가 완료")
-        try? saveData()
+        // 1.검색 조건 변수 설정
+        let exercise: String = exercise
+        
+        // 2. 동일한 날짜 및 식사 시간을 가진 식사 검색 조건 생성
+        let predicate = #Predicate<PTDiary> { $0.exercises.contains(exercise) }
+        
+        // 3. FetchDescriptor 설정
+        let descriptor = FetchDescriptor(predicate: predicate)
+        
+        // 4. ModelContext를 이용해 PTDiary 받아옴
+        do {
+            let possibleDiary = try modelContext.fetch(descriptor)
+            diaries = possibleDiary
+            
+        } catch {
+            print("\(DiaryDataError.notFound)")
+        }
+        
+        return diaries
     }
     
-    // MARK: - 업데이트
+    // MARK: - 불러오기
+    /// 해당하는 운동을 포함하는 운동 일지를 불러옵니다.
+    func fetchDiaryOfId(for id: UUID) throws -> PTDiary {
+        // 1.검색 조건 변수 설정
+        let id = id
+        
+        // 2. 동일한 날짜 및 식사 시간을 가진 식사 검색 조건 생성
+        let predicate = #Predicate<PTDiary> { $0.id == id }
+        
+        // 3. FetchDescriptor 설정
+        let descriptor = FetchDescriptor(predicate: predicate)
+        
+        // 4. ModelContext를 이용해 PTDiary 받아옴
+        do {
+            let possibleDiary = try modelContext.fetch(descriptor)
+            if let diary = possibleDiary.first {
+                return diary
+            }
+        } catch {
+            print("\(DiaryDataError.notFound)")
+        }
+        
+        throw DiaryDataError.notFound
+    }
+    
+//    // MARK: - 추가 및 업데이트
+//    func insertDiary(newDiary: PTDiary) {
+//        print("추가 시도")
+//        modelContext.insert(newDiary)
+//        
+//        print("추가 완료")
+//        try? saveData()
+//    }
+    
+    // MARK: - 추가 및 업데이트
     func updateDiary(newDiary: PTDiary) {
         print("업데이트 시도")
         do {
@@ -79,6 +154,10 @@ extension SwiftDataManager {
         } catch {
             print("업데이트 실패, 새롭게 추가 시도")
             modelContext.insert(newDiary)
+            
+            // 최신 회차 갱신
+            @AppStorage("round") var round: Int = newDiary.round
+            print(round)
             
             print("새롭게 추가 완료")
             try? saveData()
