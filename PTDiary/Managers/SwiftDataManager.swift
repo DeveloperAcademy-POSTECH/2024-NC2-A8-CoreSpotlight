@@ -54,16 +54,16 @@ extension SwiftDataManager {
         throw DiaryDataError.notFound
     }
     
-    // MARK: - 추가 및 업데이트
-    func insertDiary(newDiary: PTDiary) {
-        print("추가 시도")
-        modelContext.insert(newDiary)
-        
-        print("추가 완료")
-        try? saveData()
-    }
+//    // MARK: - 추가 및 업데이트
+//    func insertDiary(newDiary: PTDiary) {
+//        print("추가 시도")
+//        modelContext.insert(newDiary)
+//        
+//        print("추가 완료")
+//        try? saveData()
+//    }
     
-    // MARK: - 업데이트
+    // MARK: - 추가 및 업데이트
     func updateDiary(newDiary: PTDiary) {
         print("업데이트 시도")
         do {
@@ -79,6 +79,10 @@ extension SwiftDataManager {
         } catch {
             print("업데이트 실패, 새롭게 추가 시도")
             modelContext.insert(newDiary)
+            
+            // 최신 회차 갱신
+            @AppStorage("round") var round: Int = newDiary.round
+            print(round)
             
             print("새롭게 추가 완료")
             try? saveData()

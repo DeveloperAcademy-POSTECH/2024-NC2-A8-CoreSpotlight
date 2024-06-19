@@ -10,7 +10,7 @@ import SwiftData
 
 struct MainView: View {
     // 모든 운동 일지
-    @Query var diaries: [PTDiary]
+    @Query(sort: \PTDiary.round, order: .reverse) var diaries: [PTDiary]
     
     // 네비게이션 관리하는 매니저
     @ObservedObject var navigationManager: NavigationManager = NavigationManager()
@@ -26,13 +26,15 @@ struct MainView: View {
             return diaries.filter { diary in
                 diary.title.contains(searchText) ||
                 diary.exercises.contains(searchText) ||
-                diary.date.formatted().contains(searchText)
+                diary.date.formatted().contains(searchText) ||
+                diary.round.description == searchText ||
+                searchText.contains(diary.round.description)
             }
         }
     }
     
-    // 일기 개수; 회차 정보
-    var diaryCount: Int {
+    // 회차 정보; 일지 개수
+    private var round: Int {
         diaries.count
     }
     
@@ -88,7 +90,7 @@ struct MainView: View {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Spacer()
                     
-                    Text("\(diaryCount)개의 운동 일지")
+                    Text("\(round)개의 운동 일지")
                         .font(.caption)
                         .foregroundStyle(.black)
                     
@@ -96,8 +98,8 @@ struct MainView: View {
                     
                     
                     NavigationLink(value: PTDiary(
-                        title: "PT \(diaryCount+1)회차 운동 일지",
-                        round: diaryCount+1,
+                        title: "PT \(round+1)회차 운동 일지",
+                        round: round+1,
                         date: Date.now,
                         exercises: [])
                     ) {
