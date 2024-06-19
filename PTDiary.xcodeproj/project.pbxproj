@@ -21,6 +21,7 @@
 		FB0FD7172C2028BE0063B64D /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7162C2028BE0063B64D /* NavigationManager.swift */; };
 		FB0FD71A2C215B870063B64D /* CreatePTDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7192C215B870063B64D /* CreatePTDiary.swift */; };
 		FB0FD71C2C215C690063B64D /* PTDiaryAppShortcutsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD71B2C215C690063B64D /* PTDiaryAppShortcutsProvider.swift */; };
+		FB0FD7542C22A6490063B64D /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7532C22A6490063B64D /* InformationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		FB0FD7162C2028BE0063B64D /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		FB0FD7192C215B870063B64D /* CreatePTDiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePTDiary.swift; sourceTree = "<group>"; };
 		FB0FD71B2C215C690063B64D /* PTDiaryAppShortcutsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTDiaryAppShortcutsProvider.swift; sourceTree = "<group>"; };
+		FB0FD7532C22A6490063B64D /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				FB0FD6F52C2006E70063B64D /* MainView.swift */,
 				FB0FD70A2C200BB60063B64D /* DetailView.swift */,
+				FB0FD7532C22A6490063B64D /* InformationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				FB0FD7062C200AA20063B64D /* PTDiaryRow.swift in Sources */,
 				FB0FD70E2C20121E0063B64D /* PTDiary.swift in Sources */,
 				FB0FD71A2C215B870063B64D /* CreatePTDiary.swift in Sources */,
+				FB0FD7542C22A6490063B64D /* InformationView.swift in Sources */,
 				FB0FD70B2C200BB60063B64D /* DetailView.swift in Sources */,
 				FB0FD7122C201F750063B64D /* CustomTextField.swift in Sources */,
 				FB0FD6F62C2006E70063B64D /* MainView.swift in Sources */,

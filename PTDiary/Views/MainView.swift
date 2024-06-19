@@ -86,6 +86,10 @@ struct MainView: View {
                 DetailView(ptDiary: ptDiary)
                     .environmentObject(navigationManager)
             })
+            .navigationDestination(for: String.self, destination: { string in
+                InformationView()
+                    .environmentObject(navigationManager)
+            })
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Spacer()
@@ -97,15 +101,27 @@ struct MainView: View {
                     Spacer()
                     
                     
-                    NavigationLink(value: PTDiary(
-                        title: "PT \(round+1)회차 운동 일지",
-                        round: round+1,
-                        date: Date.now,
-                        exercises: [])
+                    NavigationLink(
+                        value: PTDiary(
+                            title: "PT \(round+1)회차 운동 일지",
+                            round: round+1,
+                            date: Date.now,
+                            exercises: []
+                        )
                     ) {
                         Image(systemName: "square.and.pencil")
                             .resizable()
-                            .foregroundColor(.black)
+                            .foregroundColor(.accent)
+                            .frame(width: 24, height: 24)
+                    }
+                } // toolbar
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    NavigationLink(
+                        value: "Information"
+                    ) {
+                        Image(systemName: "info.circle")
+                            .resizable()
+                            .foregroundColor(.accent)
                             .frame(width: 24, height: 24)
                     }
                 } // toolbar
