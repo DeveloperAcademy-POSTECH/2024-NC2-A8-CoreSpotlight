@@ -18,7 +18,7 @@ struct InformationView: View {
             Spacer().frame(height: 40)
             
             // 본문 1
-            Text("Core spotlight이 무엇인가요?")
+            Text("Core Spotlight이 무엇인가요?")
                 .font(.title2)
                 .fontWeight(.semibold)
             Text("아이폰에 내장된 검색 기능이에요. 홈 화면에서 중간 부분을 쓸어 내리면 나타나요.\n\n검색창에 원하는 키워드를 입력하면 빠르게 정보를 찾고 앱에 접근할 수 있어요.")
@@ -37,6 +37,7 @@ struct InformationView: View {
                 .lineSpacing(8)
                 .frame(width: .infinity)
             
+            Spacer()
         }
         .padding()
     }
