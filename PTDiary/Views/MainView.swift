@@ -131,7 +131,12 @@ struct MainView: View {
                 placement: .navigationBarDrawer(displayMode: .automatic),
                 prompt: "검색"
             )
-        }
+        } // NavigationStack
+        .onAppear(
+            perform: {
+                didCreateOrDeletePTDiary()
+            }
+        )
     }
     
 }

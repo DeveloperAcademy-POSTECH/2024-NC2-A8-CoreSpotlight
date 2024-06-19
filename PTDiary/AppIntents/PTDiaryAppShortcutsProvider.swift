@@ -11,14 +11,16 @@ struct PTDiaryAppShortcutsProvider: AppShortcutsProvider {
     static var shortcutTileColor: ShortcutTileColor = .blue
     static var appShortcuts: [AppShortcut] {
         AppShortcut(
-            intent: CreatePTDiary(), 
-            phrases: ["새로운 운동 일지 작성해줘"],
-            shortTitle: "새로운 운동 일지 작성",
-            systemImageName: "square.and.pencil"
+            intent: FindExercise(),
+            phrases: ["운동 찾아줘"],
+            shortTitle: "운동 찾기",
+            systemImageName: "dumbbell"
         )
     }
 }
 
 func didCreateOrDeletePTDiary() {
+    print("단축어 업데이트 시도")
     PTDiaryAppShortcutsProvider.updateAppShortcutParameters()
+    print("단축어 업데이트 완료")
 }

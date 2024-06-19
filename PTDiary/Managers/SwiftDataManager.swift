@@ -31,7 +31,7 @@ extension SwiftDataManager {
     
     // MARK: - 불러오기
     /// 해당하는 운동 일지를 불러옵니다.
-    private func fetchDiary(diary: PTDiary) throws -> PTDiary {
+    func fetchDiary(diary: PTDiary) throws -> PTDiary {
         // 1.검색 조건 변수 설정
         let round: Int = diary.round
         
@@ -44,14 +44,41 @@ extension SwiftDataManager {
         // 4. ModelContext를 이용해 PTDiary 받아옴
         do {
             let possibleDiary = try modelContext.fetch(descriptor)
-            if let targetmeal = possibleDiary.first {
-                return targetmeal
+            if let targetDiary = possibleDiary.first {
+                return targetDiary
             }
         } catch {
             print("\(DiaryDataError.notFound)")
         }
         
         throw DiaryDataError.notFound
+    }
+    
+    // MARK: - 불러오기
+    /// 해당하는 운동을 포함하는 운동 일지를 불러옵니다.
+    func fetchDiaryOfExercise(for exercise: String) -> [PTDiary] {
+        // 0. 결과 배열
+        var diaries: [PTDiary] = []
+        
+        // 1.검색 조건 변수 설정
+        let exercise: String = exercise
+        
+        // 2. 동일한 날짜 및 식사 시간을 가진 식사 검색 조건 생성
+        let predicate = #Predicate<PTDiary> { $0.exercises.contains(exercise) }
+        
+        // 3. FetchDescriptor 설정
+        let descriptor = FetchDescriptor(predicate: predicate)
+        
+        // 4. ModelContext를 이용해 PTDiary 받아옴
+        do {
+            let possibleDiary = try modelContext.fetch(descriptor)
+            diaries = possibleDiary
+            
+        } catch {
+            print("\(DiaryDataError.notFound)")
+        }
+        
+        return diaries
     }
     
 //    // MARK: - 추가 및 업데이트
