@@ -25,6 +25,10 @@ struct PTDiaryApp: App {
         }
     }()
     
+    init() {
+        PTDiaryAppShortcutsProvider.updateAppShortcutParameters()
+    }
+    
     var body: some Scene {
         WindowGroup {
             MainView()

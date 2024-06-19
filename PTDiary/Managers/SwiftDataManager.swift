@@ -29,6 +29,29 @@ extension SwiftDataManager {
         }
     }
     
+    /// PTDiary List를 반환합니다.
+    func fetchList() -> [PTDiary] {
+        
+        // 1. 최종 반환할 PTDiary 배열
+        var diaries: [PTDiary] = []
+        
+        // 2. Date를 기준으로 Sorting 규칙 생성
+        let sort = [SortDescriptor<PTDiary>(\.round, order: .reverse)]
+        
+        // 3. FetchDescriptor 설정
+        let descriptor = FetchDescriptor(sortBy: sort)
+        
+        // 4. ModelContext를 이용해 SwiftDataDiary 받아온 후 [Diary]로 변환
+        do {
+            let everyDiary = try modelContext.fetch(descriptor)
+            diaries = everyDiary.map { PTDiary(id: $0.id, title: $0.title, round: $0.round, date: $0.date, exercises: $0.exercises) }
+        } catch {
+            print("\(DiaryDataError.notFound)")
+        }
+        
+        // 5. 최종 반환
+        return diaries
+    }
     // MARK: - 불러오기
     /// 해당하는 운동 일지를 불러옵니다.
     func fetchDiary(diary: PTDiary) throws -> PTDiary {
@@ -79,6 +102,31 @@ extension SwiftDataManager {
         }
         
         return diaries
+    }
+    
+    // MARK: - 불러오기
+    /// 해당하는 운동을 포함하는 운동 일지를 불러옵니다.
+    func fetchDiaryOfId(for id: UUID) throws -> PTDiary {
+        // 1.검색 조건 변수 설정
+        let id = id
+        
+        // 2. 동일한 날짜 및 식사 시간을 가진 식사 검색 조건 생성
+        let predicate = #Predicate<PTDiary> { $0.id == id }
+        
+        // 3. FetchDescriptor 설정
+        let descriptor = FetchDescriptor(predicate: predicate)
+        
+        // 4. ModelContext를 이용해 PTDiary 받아옴
+        do {
+            let possibleDiary = try modelContext.fetch(descriptor)
+            if let diary = possibleDiary.first {
+                return diary
+            }
+        } catch {
+            print("\(DiaryDataError.notFound)")
+        }
+        
+        throw DiaryDataError.notFound
     }
     
 //    // MARK: - 추가 및 업데이트

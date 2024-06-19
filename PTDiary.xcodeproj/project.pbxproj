@@ -22,6 +22,7 @@
 		FB0FD71A2C215B870063B64D /* FindExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7192C215B870063B64D /* FindExercise.swift */; };
 		FB0FD71C2C215C690063B64D /* PTDiaryAppShortcutsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD71B2C215C690063B64D /* PTDiaryAppShortcutsProvider.swift */; };
 		FB0FD7542C22A6490063B64D /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7532C22A6490063B64D /* InformationView.swift */; };
+		FB0FD7562C22BF2E0063B64D /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7552C22BF2E0063B64D /* ExerciseListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		FB0FD7192C215B870063B64D /* FindExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindExercise.swift; sourceTree = "<group>"; };
 		FB0FD71B2C215C690063B64D /* PTDiaryAppShortcutsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTDiaryAppShortcutsProvider.swift; sourceTree = "<group>"; };
 		FB0FD7532C22A6490063B64D /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
+		FB0FD7552C22BF2E0063B64D /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,13 +75,13 @@
 		FB0FD6F22C2006E70063B64D /* PTDiary */ = {
 			isa = PBXGroup;
 			children = (
+				FB0FD6F32C2006E70063B64D /* PTDiaryApp.swift */,
 				FB0FD7182C215B650063B64D /* AppIntents */,
 				FB0FD7132C2021300063B64D /* Managers */,
 				FB0FD70C2C2012120063B64D /* Models */,
 				FB0FD7072C200AD20063B64D /* Extensions */,
 				FB0FD7042C200A890063B64D /* Components */,
 				FB0FD7032C200A7D0063B64D /* Views */,
-				FB0FD6F32C2006E70063B64D /* PTDiaryApp.swift */,
 				FB0FD6F92C2006E90063B64D /* Assets.xcassets */,
 				FB0FD6FB2C2006E90063B64D /* Preview Content */,
 			);
@@ -100,6 +102,7 @@
 				FB0FD6F52C2006E70063B64D /* MainView.swift */,
 				FB0FD70A2C200BB60063B64D /* DetailView.swift */,
 				FB0FD7532C22A6490063B64D /* InformationView.swift */,
+				FB0FD7552C22BF2E0063B64D /* ExerciseListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			files = (
 				FB0FD71C2C215C690063B64D /* PTDiaryAppShortcutsProvider.swift in Sources */,
 				FB0FD7092C200AE20063B64D /* Date+Extension.swift in Sources */,
+				FB0FD7562C22BF2E0063B64D /* ExerciseListView.swift in Sources */,
 				FB0FD7062C200AA20063B64D /* PTDiaryRow.swift in Sources */,
 				FB0FD70E2C20121E0063B64D /* PTDiary.swift in Sources */,
 				FB0FD71A2C215B870063B64D /* FindExercise.swift in Sources */,

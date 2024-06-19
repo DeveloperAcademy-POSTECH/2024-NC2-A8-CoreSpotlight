@@ -12,9 +12,9 @@ struct PTDiaryAppShortcutsProvider: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] {
         AppShortcut(
             intent: FindExercise(),
-            phrases: ["운동 찾아줘"],
-            shortTitle: "운동 찾기",
-            systemImageName: "dumbbell"
+            phrases: ["Find workout"],
+            shortTitle: "Find workout",
+            systemImageName: "dumbbell.fill"
         )
     }
 }
