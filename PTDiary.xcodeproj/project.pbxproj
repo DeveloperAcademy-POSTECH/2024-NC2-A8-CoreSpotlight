@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB0AF02F2C24211C003B5413 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0AF02E2C24211C003B5413 /* Array+Extensions.swift */; };
 		FB0FD6F42C2006E70063B64D /* PTDiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD6F32C2006E70063B64D /* PTDiaryApp.swift */; };
 		FB0FD6F62C2006E70063B64D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD6F52C2006E70063B64D /* MainView.swift */; };
 		FB0FD6FA2C2006E90063B64D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB0FD6F92C2006E90063B64D /* Assets.xcassets */; };
@@ -23,9 +24,11 @@
 		FB0FD71C2C215C690063B64D /* PTDiaryAppShortcutsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD71B2C215C690063B64D /* PTDiaryAppShortcutsProvider.swift */; };
 		FB0FD7542C22A6490063B64D /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7532C22A6490063B64D /* InformationView.swift */; };
 		FB0FD7562C22BF2E0063B64D /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7552C22BF2E0063B64D /* ExerciseListView.swift */; };
+		FB0FD7582C23F7970063B64D /* ExerciseModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7572C23F7970063B64D /* ExerciseModalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB0AF02E2C24211C003B5413 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		FB0FD6F02C2006E70063B64D /* PTDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PTDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB0FD6F32C2006E70063B64D /* PTDiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTDiaryApp.swift; sourceTree = "<group>"; };
 		FB0FD6F52C2006E70063B64D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -43,6 +46,7 @@
 		FB0FD71B2C215C690063B64D /* PTDiaryAppShortcutsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTDiaryAppShortcutsProvider.swift; sourceTree = "<group>"; };
 		FB0FD7532C22A6490063B64D /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		FB0FD7552C22BF2E0063B64D /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
+		FB0FD7572C23F7970063B64D /* ExerciseModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 				FB0FD70A2C200BB60063B64D /* DetailView.swift */,
 				FB0FD7532C22A6490063B64D /* InformationView.swift */,
 				FB0FD7552C22BF2E0063B64D /* ExerciseListView.swift */,
+				FB0FD7572C23F7970063B64D /* ExerciseModalView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 			children = (
 				FB0FD7082C200AE20063B64D /* Date+Extension.swift */,
 				FB0FD70F2C2017000063B64D /* Calendar+Extension.swift */,
+				FB0AF02E2C24211C003B5413 /* Array+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -232,8 +238,10 @@
 				FB0FD7122C201F750063B64D /* CustomTextField.swift in Sources */,
 				FB0FD6F62C2006E70063B64D /* MainView.swift in Sources */,
 				FB0FD7102C2017000063B64D /* Calendar+Extension.swift in Sources */,
+				FB0AF02F2C24211C003B5413 /* Array+Extensions.swift in Sources */,
 				FB0FD6F42C2006E70063B64D /* PTDiaryApp.swift in Sources */,
 				FB0FD7152C20213E0063B64D /* SwiftDataManager.swift in Sources */,
+				FB0FD7582C23F7970063B64D /* ExerciseModalView.swift in Sources */,
 				FB0FD7172C2028BE0063B64D /* NavigationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,6 +379,7 @@
 				DEVELOPMENT_TEAM = 2UWGKS2UN5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "운동일지";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -400,6 +409,7 @@
 				DEVELOPMENT_TEAM = 2UWGKS2UN5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "운동일지";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
