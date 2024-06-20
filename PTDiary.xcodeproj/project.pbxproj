@@ -23,6 +23,7 @@
 		FB0FD71C2C215C690063B64D /* PTDiaryAppShortcutsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD71B2C215C690063B64D /* PTDiaryAppShortcutsProvider.swift */; };
 		FB0FD7542C22A6490063B64D /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7532C22A6490063B64D /* InformationView.swift */; };
 		FB0FD7562C22BF2E0063B64D /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7552C22BF2E0063B64D /* ExerciseListView.swift */; };
+		FB0FD7582C23F7970063B64D /* ExerciseModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FD7572C23F7970063B64D /* ExerciseModalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		FB0FD71B2C215C690063B64D /* PTDiaryAppShortcutsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTDiaryAppShortcutsProvider.swift; sourceTree = "<group>"; };
 		FB0FD7532C22A6490063B64D /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		FB0FD7552C22BF2E0063B64D /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
+		FB0FD7572C23F7970063B64D /* ExerciseModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				FB0FD70A2C200BB60063B64D /* DetailView.swift */,
 				FB0FD7532C22A6490063B64D /* InformationView.swift */,
 				FB0FD7552C22BF2E0063B64D /* ExerciseListView.swift */,
+				FB0FD7572C23F7970063B64D /* ExerciseModalView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				FB0FD7102C2017000063B64D /* Calendar+Extension.swift in Sources */,
 				FB0FD6F42C2006E70063B64D /* PTDiaryApp.swift in Sources */,
 				FB0FD7152C20213E0063B64D /* SwiftDataManager.swift in Sources */,
+				FB0FD7582C23F7970063B64D /* ExerciseModalView.swift in Sources */,
 				FB0FD7172C2028BE0063B64D /* NavigationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

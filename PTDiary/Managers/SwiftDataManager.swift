@@ -41,7 +41,7 @@ extension SwiftDataManager {
         // 3. FetchDescriptor 설정
         let descriptor = FetchDescriptor(sortBy: sort)
         
-        // 4. ModelContext를 이용해 SwiftDataDiary 받아온 후 [Diary]로 변환
+        // 4. ModelContext를 이용해 모든 값 받아온 후 diaries 초기화
         do {
             let everyDiary = try modelContext.fetch(descriptor)
             diaries = everyDiary.map { PTDiary(id: $0.id, title: $0.title, round: $0.round, date: $0.date, exercises: $0.exercises) }
@@ -51,6 +51,34 @@ extension SwiftDataManager {
         
         // 5. 최종 반환
         return diaries
+    }
+    
+    /// 모든 운동을 반환합니다.
+    func fetchExerciseList() -> [String] {
+        
+        // 1. 최종 반환할 운동 집합
+        var exercises: Set<String> = []
+        
+        // 2. Date를 기준으로 Sorting 규칙 생성
+        let sort = [SortDescriptor<PTDiary>(\.round, order: .reverse)]
+        
+        // 3. FetchDescriptor 설정
+        let descriptor = FetchDescriptor(sortBy: sort)
+        
+        // 4. ModelContext를 이용해 모든 값 받아온 후 운동만 가져옴
+        do {
+            let everyDiary = try modelContext.fetch(descriptor)
+            for diary in everyDiary {
+                for exercise in diary.exercises {
+                    exercises.insert(exercise)
+                }
+            }
+        } catch {
+            print("\(DiaryDataError.notFound)")
+        }
+        
+        // 5. 최종 반환
+        return Array(exercises)
     }
     // MARK: - 불러오기
     /// 해당하는 운동 일지를 불러옵니다.
@@ -128,6 +156,8 @@ extension SwiftDataManager {
         
         throw DiaryDataError.notFound
     }
+    
+    
     
 //    // MARK: - 추가 및 업데이트
 //    func insertDiary(newDiary: PTDiary) {
