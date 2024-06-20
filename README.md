@@ -15,7 +15,12 @@
 > **운동일지** <br/> 운동일지를 쓴 뒤 Spotlight을 통해 앱을 열지 않고도 원하는 기록에 빠르게 접근할 수 있게 하자!
 
 ## 🖼️ Prototype
-(프로토타입과 설명 추가)
+![image](https://github.com/DeveloperAcademy-POSTECH/2024-NC2-A8-CoreSpotlight/assets/74140181/bf11399f-47d8-4143-8014-064b7e0dd507)
+![image](https://github.com/DeveloperAcademy-POSTECH/2024-NC2-A8-CoreSpotlight/assets/74140181/8e63db2c-8041-4dc6-8228-508cc1f56f0c)
+![image](https://github.com/DeveloperAcademy-POSTECH/2024-NC2-A8-CoreSpotlight/assets/74140181/415c2694-d312-4402-a2de-b7d205d35e45)
+![image](https://github.com/DeveloperAcademy-POSTECH/2024-NC2-A8-CoreSpotlight/assets/74140181/874a3fca-96f3-423e-8dd8-c71f1b49b603)
+![image](https://github.com/DeveloperAcademy-POSTECH/2024-NC2-A8-CoreSpotlight/assets/74140181/a32ed42b-ff12-400f-ae7c-b938a1559efd)
+
 
 ## 🛠️ About Code
 ```
