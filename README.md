@@ -18,4 +18,43 @@
 (프로토타입과 설명 추가)
 
 ## 🛠️ About Code
-(핵심 코드에 대한 설명 추가)
+```
+
+    /// Core Spotlight를 통해 데이터를 색인합니다.
+    private func indexData(diary: PTDiary) {
+        // 1. Core Spotlight에 색인시킬 아이템을 저장할 배열을 정의합니다.
+        var searchableItems = [CSSearchableItem]()
+        
+        // 2. 어떻게 색인시킬지 정합니다. Spotlight에 직접적으로 나타나는 항목입니다.
+        let attributeSet = CSSearchableItemAttributeSet(contentType: .text) // Tip: ContentType을 정확히 설정하면 검색 정확도가 올라갑니다!
+        attributeSet.title = diary.title // 제목
+        attributeSet.displayName = diary.title // 나타나는 값(제목) cf) ios 17에서 색인 동작이 잘 되지 않아, 추가된 Property 입니다.
+        attributeSet.contentDescription = diary.date.dateFormat // 내용 설명; 제목 텍스트 밑에 나타납니다.
+        attributeSet.alternateNames = diary.exercises // 대체 텍스트; 설명 텍스트 밑에 나타납니다.
+        attributeSet.keywords = diary.exercises // 검색 키워드; 사용자가 해당 키워드를 Spotlight에 입력하면 해당 데이터가 나타납니다. cf) ios 17에서 해당 기능이 동작하지 않습니다. 하단에 링크 첨부.
+        // 키워드가 동작하지 않는 문제: https://forums.developer.apple.com/forums/thread/734996
+        
+        // 3.색인시킬 아이템을 초기화합니다.
+        let searchableItem = CSSearchableItem(
+	        uniqueIdentifier: diary.id.uuidString, d
+	        omainIdentifier: "exerciseDiary", 
+	        attributeSet: attributeSet
+        )
+        searchableItems.append(searchableItem)
+        
+        
+        // 4. 인덱스 범위를 정합니다. cf) 민감 정보인 경우 default를 사용하지 않고 보호화된 인덱스를 사용합니다.
+        // let secureIndex = CSSearchableIndex(name: "운동 일지", protectionClass:.complete)
+
+        let defaultIndex = CSSearchableIndex.default() // 기본 인덱스
+		    
+        // 5. 색인시킬 아이템을 인덱스에 포함시킵니다; 색인 완료
+        defaultIndex.indexSearchableItems(searchableItems) { error in
+            if let error = error {
+                print("Spotlight 색인 시도: \(error.localizedDescription)")
+            } else {
+                print("Spotlight 색인 성공")
+            }
+        }
+    }
+```
